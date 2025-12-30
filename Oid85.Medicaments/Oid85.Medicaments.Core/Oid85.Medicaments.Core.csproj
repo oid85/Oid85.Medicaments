@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Requests\" />
-    <Folder Include="Responses\" />
-  </ItemGroup>
-
 </Project>

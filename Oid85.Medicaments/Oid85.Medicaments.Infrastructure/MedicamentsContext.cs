@@ -8,6 +8,7 @@ namespace Oid85.Medicaments.Infrastructure;
 public class MedicamentsContext(DbContextOptions<MedicamentsContext> options) : DbContext(options)
 {
     public DbSet<PillEntity> PillEntities { get; set; }
+    public DbSet<PillIncrementEntity> PillIncrementEntities{ get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

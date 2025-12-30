@@ -13,5 +13,11 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         /// </summary>
         [MaxLength(500)]
         public string Name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Расписание
+        /// </summary>
+        [MaxLength(100)]
+        public string Shedule { get; set; } = string.Empty;
     }
 }

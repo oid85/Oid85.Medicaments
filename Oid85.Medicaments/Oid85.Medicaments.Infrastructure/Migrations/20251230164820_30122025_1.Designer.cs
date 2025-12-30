@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Oid85.Medicaments.Infrastructure;
@@ -11,9 +12,11 @@ using Oid85.Medicaments.Infrastructure;
 namespace Oid85.Medicaments.Infrastructure.Migrations
 {
     [DbContext(typeof(MedicamentsContext))]
-    partial class MedicamentsContextModelSnapshot : ModelSnapshot
+    [Migration("20251230164820_30122025_1")]
+    partial class _30122025_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,11 +45,6 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
-
-                    b.Property<string>("Shedule")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -77,7 +75,7 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid>("PillId")
+                    b.Property<Guid>("PillEntityId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -85,20 +83,20 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PillId");
+                    b.HasIndex("PillEntityId");
 
                     b.ToTable("PillIncrementEntities", "public");
                 });
 
             modelBuilder.Entity("Oid85.Medicaments.Infrastructure.Entities.PillIncrementEntity", b =>
                 {
-                    b.HasOne("Oid85.Medicaments.Infrastructure.Entities.PillEntity", "Pill")
+                    b.HasOne("Oid85.Medicaments.Infrastructure.Entities.PillEntity", "PillEntity")
                         .WithMany()
-                        .HasForeignKey("PillId")
+                        .HasForeignKey("PillEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Pill");
+                    b.Navigation("PillEntity");
                 });
 #pragma warning restore 612, 618
         }
