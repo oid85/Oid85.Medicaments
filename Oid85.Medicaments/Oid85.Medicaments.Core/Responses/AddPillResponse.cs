@@ -2,5 +2,6 @@
 {
     public class AddPillResponse
     {
+        public Guid? Id { get; set; }
     }
 }

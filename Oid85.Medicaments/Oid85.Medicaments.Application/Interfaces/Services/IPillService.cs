@@ -8,10 +8,29 @@ namespace Oid85.Medicaments.Application.Interfaces.Services
     /// </summary>
     public interface IPillService
     {
-        Task<AddPillResponse> AddPillAsync(AddPillRequest request);
-        Task<CreatePillResponse> CreatePillAsync(CreatePillRequest request);
-        Task<DeletePillResponse> DeletePillAsync(DeletePillRequest request);
-        Task<EditPillResponse> EditPillAsync(EditPillRequest request);
-        Task<GetPillListResponse> GetPillListAsync(GetPillListRequest request);
+        /// <summary>
+        /// Добавить запас лекарств
+        /// </summary>
+        Task<AddPillResponse?> AddPillAsync(AddPillRequest request);
+        
+        /// <summary>
+        /// Добавить лекарство
+        /// </summary>
+        Task<CreatePillResponse?> CreatePillAsync(CreatePillRequest request);
+        
+        /// <summary>
+        /// Удалить лекарство
+        /// </summary>
+        Task<DeletePillResponse?> DeletePillAsync(DeletePillRequest request);
+        
+        /// <summary>
+        /// Редактировать лекарство
+        /// </summary>
+        Task<EditPillResponse?> EditPillAsync(EditPillRequest request);
+        
+        /// <summary>
+        /// Получить список лекарств
+        /// </summary>
+        Task<GetPillListResponse?> GetPillListAsync(GetPillListRequest request);
     }
 }

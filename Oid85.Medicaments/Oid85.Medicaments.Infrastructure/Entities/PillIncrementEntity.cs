@@ -13,11 +13,6 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         public DateOnly Date { get; set; }
 
         /// <summary>
-        /// Изменение
-        /// </summary>
-        public int Delta { get; set; }
-
-        /// <summary>
         /// Запас
         /// </summary>
         public int Reserve { get; set; }

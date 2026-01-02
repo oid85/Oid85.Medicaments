@@ -16,5 +16,10 @@ namespace Oid85.Medicaments.Core.Models
         /// Расписание
         /// </summary>
         public string Shedule { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Доза
+        /// </summary>
+        public int Dose { get; set; }
     }
 }

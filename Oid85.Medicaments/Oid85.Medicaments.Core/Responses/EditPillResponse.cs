@@ -2,5 +2,6 @@
 {
     public class EditPillResponse
     {
+        public Guid? Id { get; set; }
     }
 }

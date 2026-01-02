@@ -2,5 +2,6 @@
 {
     public class DeletePillResponse
     {
+        public Guid? Id { get; set; }
     }
 }

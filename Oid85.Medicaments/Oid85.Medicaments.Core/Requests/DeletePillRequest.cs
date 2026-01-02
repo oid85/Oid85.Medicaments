@@ -2,5 +2,6 @@
 {
     public class DeletePillRequest
     {
+        public Guid Id { get; set; }
     }
 }
