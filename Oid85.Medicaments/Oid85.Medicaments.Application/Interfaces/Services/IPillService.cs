@@ -8,6 +8,7 @@ namespace Oid85.Medicaments.Application.Interfaces.Services
     /// </summary>
     public interface IPillService
     {
+        Task<AddPillResponse> AddPillAsync(AddPillRequest request);
         Task<CreatePillResponse> CreatePillAsync(CreatePillRequest request);
         Task<DeletePillResponse> DeletePillAsync(DeletePillRequest request);
         Task<EditPillResponse> EditPillAsync(EditPillRequest request);

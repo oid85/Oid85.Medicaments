@@ -1,11 +1,11 @@
-﻿using Oid85.Medicaments.Infrastructure.Entities.Base;
+﻿using Oid85.Medicaments.Core.Models.Base;
 
-namespace Oid85.Medicaments.Infrastructure.Entities
+namespace Oid85.Medicaments.Core.Models
 {
     /// <summary>
     /// Приход-расход лекарства
     /// </summary>
-    public class PillIncrementEntity : AuditableEntity
+    public class PillIncrement : AuditableModel
     {
         /// <summary>
         /// Дата
@@ -25,6 +25,6 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         /// <summary>
         /// Лекарство
         /// </summary>
-        public PillEntity Pill { get; set; }
+        public Pill Pill { get; set; }
     }
 }

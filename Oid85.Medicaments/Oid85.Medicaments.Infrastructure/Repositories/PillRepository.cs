@@ -5,8 +5,8 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
 {
     /// <inheritdoc />
     public class PillRepository(
-        IDbContextFactory<MedicamentsContext> contextFactory
-        ) : IPillRepository
+        IDbContextFactory<MedicamentsContext> contextFactory) 
+        : IPillRepository
     {
 
     }

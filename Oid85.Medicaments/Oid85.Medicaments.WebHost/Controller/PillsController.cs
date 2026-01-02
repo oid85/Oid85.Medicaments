@@ -67,4 +67,17 @@ public class PillsController(
         GetResponseAsync(
             () => pillService.DeletePillAsync(request),
             result => new BaseResponse<DeletePillResponse> { Result = result });
+
+    /// <summary>
+    /// Пополнить лекарство
+    /// </summary>
+    [HttpPost("add")]
+    [ProducesResponseType(typeof(BaseResponse<AddPillResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BaseResponse<AddPillResponse>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(BaseResponse<AddPillResponse>), StatusCodes.Status500InternalServerError)]
+    public Task<IActionResult> AddPillAsync(
+        [FromBody] AddPillRequest request) =>
+        GetResponseAsync(
+            () => pillService.AddPillAsync(request),
+            result => new BaseResponse<AddPillResponse> { Result = result });
 }

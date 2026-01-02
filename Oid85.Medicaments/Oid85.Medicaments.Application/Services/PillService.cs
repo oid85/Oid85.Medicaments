@@ -9,6 +9,11 @@ namespace Oid85.Medicaments.Application.Services
     internal class PillService(
         IPillRepository pillRepository) : IPillService
     {
+        public Task<AddPillResponse> AddPillAsync(AddPillRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<CreatePillResponse> CreatePillAsync(CreatePillRequest request)
         {
             throw new NotImplementedException();

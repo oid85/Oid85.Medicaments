@@ -1,6 +1,6 @@
 ﻿namespace Oid85.Medicaments.Core.Requests
 {
-    public class CreatePillRequest
+    public class AddPillRequest
     {
     }
 }

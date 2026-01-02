@@ -1,6 +1,6 @@
 ﻿namespace Oid85.Medicaments.Core.Responses
 {
-    public class GetPillListResponse
+    public class AddPillResponse
     {
     }
 }

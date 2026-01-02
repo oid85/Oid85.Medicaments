@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Oid85.Medicaments.Infrastructure;
@@ -11,9 +12,11 @@ using Oid85.Medicaments.Infrastructure;
 namespace Oid85.Medicaments.Infrastructure.Migrations
 {
     [DbContext(typeof(MedicamentsContext))]
-    partial class MedicamentsContextModelSnapshot : ModelSnapshot
+    [Migration("20260102113714_02012026_1")]
+    partial class _02012026_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,6 +45,9 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
+
+                    b.Property<int>("Reserve")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Shedule")
                         .IsRequired()
@@ -79,9 +85,6 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
 
                     b.Property<Guid>("PillId")
                         .HasColumnType("uuid");
-
-                    b.Property<int>("Reserve")
-                        .HasColumnType("integer");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
