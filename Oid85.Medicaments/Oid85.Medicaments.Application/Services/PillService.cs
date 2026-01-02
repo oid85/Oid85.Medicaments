@@ -72,6 +72,7 @@ namespace Oid85.Medicaments.Application.Services
         {
             var model = new Pill
             {
+                Id = request.Id,
                 Name = request.Name,
                 Shedule = request.Shedule,
                 Dose = request.Dose

@@ -43,7 +43,7 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
             var pillIncrementEntity = await context.PillIncrementEntities
                 .Include(x => x.Pill)
                 .Where(x => x.Pill.Id == pillId)
-                .OrderBy(x => x.Date)
+                .OrderBy(x => x.CreatedAt)
                 .LastOrDefaultAsync();
 
             var prevReserve = pillIncrementEntity is null ? 0 : pillIncrementEntity.Reserve;
@@ -51,6 +51,7 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
             var entity = new PillIncrementEntity
             {
                 Id = Guid.NewGuid(),
+                Date = DateOnly.FromDateTime(DateTime.Today),
                 Pill = pillEntity,
                 Reserve = prevReserve + number
             };
@@ -97,7 +98,7 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
             var entity = await context.PillIncrementEntities
                 .Include(x => x.Pill)
                 .Where(x => x.Pill.Id == id)
-                .OrderBy(x => x.Date)
+                .OrderBy(x => x.CreatedAt)
                 .LastOrDefaultAsync();
 
             if (entity is not null)
