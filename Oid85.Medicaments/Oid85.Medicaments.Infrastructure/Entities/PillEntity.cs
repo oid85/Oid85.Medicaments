@@ -24,10 +24,5 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         /// Доза
         /// </summary>
         public int? Dose { get; set; }
-
-        /// <summary>
-        /// Напоминание о приеме
-        /// </summary>
-        public bool? RemindNotification { get; set; }
     }
 }

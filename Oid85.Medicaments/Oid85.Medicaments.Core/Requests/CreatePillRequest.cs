@@ -5,6 +5,5 @@
         public string Name { get; set; }
         public string Shedule { get; set; }
         public int Dose { get; set; }
-        public bool RemindNotification { get; set; }
     }
 }

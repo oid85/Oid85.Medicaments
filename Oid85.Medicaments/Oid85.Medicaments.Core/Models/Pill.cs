@@ -21,10 +21,5 @@ namespace Oid85.Medicaments.Core.Models
         /// Доза
         /// </summary>
         public int? Dose { get; set; }
-
-        /// <summary>
-        /// Напоминание о приеме
-        /// </summary>
-        public bool? RemindNotification { get; set; }
     }
 }
