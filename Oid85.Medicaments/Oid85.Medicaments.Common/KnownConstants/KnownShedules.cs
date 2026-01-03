@@ -23,6 +23,6 @@
         /// <summary>
         /// 3 раза в день с 1 по 10 число каждого месяца
         /// </summary>
-        public const string ThreeTimesEveryDayTenDaysEveryMonth = "ThreeTimesEveryDayTenDaysEveryMonth";
+        public const string ThreeTimesEveryDay_1_10_EveryMonth = "ThreeTimesEveryDay_1_10_EveryMonth";
     }
 }

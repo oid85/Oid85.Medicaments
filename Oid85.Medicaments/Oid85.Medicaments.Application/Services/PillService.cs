@@ -35,7 +35,8 @@ namespace Oid85.Medicaments.Application.Services
             {
                 Name = request.Name,
                 Shedule = request.Shedule,
-                Dose = request.Dose
+                Dose = request.Dose,
+                RemindNotification = request.RemindNotification
             };
 
             var id = await pillRepository.CreatePillAsync(model);
@@ -75,7 +76,8 @@ namespace Oid85.Medicaments.Application.Services
                 Id = request.Id,
                 Name = request.Name,
                 Shedule = request.Shedule,
-                Dose = request.Dose
+                Dose = request.Dose,
+                RemindNotification = request.RemindNotification
             };
 
             var id = await pillRepository.EditPillAsync(model);
@@ -112,6 +114,7 @@ namespace Oid85.Medicaments.Application.Services
                         Name = pill.Name,
                         Shedule= pill.Shedule,
                         Dose = pill.Dose,
+                        RemindNotification = pill.RemindNotification,
                         Reserve = reserve
                     });
             }

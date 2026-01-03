@@ -15,11 +15,16 @@ namespace Oid85.Medicaments.Core.Models
         /// <summary>
         /// Расписание
         /// </summary>
-        public string Shedule { get; set; } = string.Empty;
+        public string? Shedule { get; set; }
 
         /// <summary>
         /// Доза
         /// </summary>
-        public int Dose { get; set; }
+        public int? Dose { get; set; }
+
+        /// <summary>
+        /// Напоминание о приеме
+        /// </summary>
+        public bool? RemindNotification { get; set; }
     }
 }

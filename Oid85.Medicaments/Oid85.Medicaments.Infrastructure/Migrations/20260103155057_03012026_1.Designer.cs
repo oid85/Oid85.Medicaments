@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Oid85.Medicaments.Infrastructure;
@@ -11,9 +12,11 @@ using Oid85.Medicaments.Infrastructure;
 namespace Oid85.Medicaments.Infrastructure.Migrations
 {
     [DbContext(typeof(MedicamentsContext))]
-    partial class MedicamentsContextModelSnapshot : ModelSnapshot
+    [Migration("20260103155057_03012026_1")]
+    partial class _03012026_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
                     b.Property<DateTime>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("Dose")
+                    b.Property<int>("Dose")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
@@ -46,10 +49,11 @@ namespace Oid85.Medicaments.Infrastructure.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<bool?>("RemindNotification")
+                    b.Property<bool>("RemindNotification")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Shedule")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
