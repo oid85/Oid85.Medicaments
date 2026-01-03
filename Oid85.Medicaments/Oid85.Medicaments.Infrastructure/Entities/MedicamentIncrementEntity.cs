@@ -5,7 +5,7 @@ namespace Oid85.Medicaments.Infrastructure.Entities
     /// <summary>
     /// Приход-расход лекарства
     /// </summary>
-    public class PillIncrementEntity : AuditableEntity
+    public class MedicamentIncrementEntity : AuditableEntity
     {
         /// <summary>
         /// Дата
@@ -20,6 +20,6 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         /// <summary>
         /// Лекарство
         /// </summary>
-        public PillEntity Pill { get; set; }
+        public MedicamentEntity Medicament { get; set; }
     }
 }

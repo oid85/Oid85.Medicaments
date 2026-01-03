@@ -7,16 +7,16 @@ using Oid85.Medicaments.Infrastructure.Entities;
 namespace Oid85.Medicaments.Infrastructure.Repositories
 {
     /// <inheritdoc />
-    public class PillRepository(
+    public class MedicamentRepository(
         IDbContextFactory<MedicamentsContext> contextFactory)
-        : IPillRepository
+        : IMedicamentRepository
     {
         /// <inheritdoc />
-        public async Task<Guid?> CreatePillAsync(Pill model)
+        public async Task<Guid?> CreateMedicamentAsync(Medicament model)
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            var entity = new PillEntity
+            var entity = new MedicamentEntity
             {
                 Id = Guid.NewGuid(),
                 Name = model.Name,
@@ -31,28 +31,28 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<Guid?> CreatePillIncrementAsync(Guid pillId, int number)
+        public async Task<Guid?> CreateMedicamentIncrementAsync(Guid medicamentId, int number)
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            var pillEntity = await context.PillEntities.FirstOrDefaultAsync(x => x.Id == pillId);
+            var medicamentEntity = await context.MedicamentEntities.FirstOrDefaultAsync(x => x.Id == medicamentId);
 
-            if (pillEntity is null)
+            if (medicamentEntity is null)
                 return null;
 
-            var pillIncrementEntity = await context.PillIncrementEntities
-                .Include(x => x.Pill)
-                .Where(x => x.Pill.Id == pillId)
+            var medicamentIncrementEntity = await context.MedicamentIncrementEntities
+                .Include(x => x.Medicament)
+                .Where(x => x.Medicament.Id == medicamentId)
                 .OrderBy(x => x.CreatedAt)
                 .LastOrDefaultAsync();
 
-            var prevReserve = pillIncrementEntity is null ? 0 : pillIncrementEntity.Reserve;
+            var prevReserve = medicamentIncrementEntity is null ? 0 : medicamentIncrementEntity.Reserve;
 
-            var entity = new PillIncrementEntity
+            var entity = new MedicamentIncrementEntity
             {
                 Id = Guid.NewGuid(),
                 Date = DateOnly.FromDateTime(DateTime.Today),
-                Pill = pillEntity,
+                Medicament = medicamentEntity,
                 Reserve = prevReserve + number
             };
 
@@ -63,22 +63,22 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<Guid?> DeletePillAsync(Guid id)
+        public async Task<Guid?> DeleteMedicamentAsync(Guid id)
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            await context.PillEntities.Where(x => x.Id == id).ExecuteDeleteAsync();
+            await context.MedicamentEntities.Where(x => x.Id == id).ExecuteDeleteAsync();
             await context.SaveChangesAsync();
 
             return id;
         }
 
         /// <inheritdoc />
-        public async Task<Guid?> EditPillAsync(Pill model)
+        public async Task<Guid?> EditMedicamentAsync(Medicament model)
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            await context.PillEntities
+            await context.MedicamentEntities
                 .Where(x => x.Id == model.Id)
                 .ExecuteUpdateAsync(x => x
                         .SetProperty(entity => entity.Name, model.Name)
@@ -91,13 +91,13 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<int> GetPillReserveAsync(Guid id)
+        public async Task<int> GetMedicamentReserveAsync(Guid id)
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            var entity = await context.PillIncrementEntities
-                .Include(x => x.Pill)
-                .Where(x => x.Pill.Id == id)
+            var entity = await context.MedicamentIncrementEntities
+                .Include(x => x.Medicament)
+                .Where(x => x.Medicament.Id == id)
                 .OrderBy(x => x.CreatedAt)
                 .LastOrDefaultAsync();
 
@@ -108,11 +108,11 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<List<Pill>?> GetPillsAsync()
+        public async Task<List<Medicament>?> GetMedicamentsAsync()
         {
             await using var context = await contextFactory.CreateDbContextAsync();
 
-            var entities = context.PillEntities.AsQueryable();
+            var entities = context.MedicamentEntities.AsQueryable();
 
             if (entities is null)
                 return null;
@@ -125,7 +125,7 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 return null;
 
             var result = entities
-                .Select(x => new Pill
+                .Select(x => new Medicament
                 {
                     Id = x.Id,
                     Name = x.Name,

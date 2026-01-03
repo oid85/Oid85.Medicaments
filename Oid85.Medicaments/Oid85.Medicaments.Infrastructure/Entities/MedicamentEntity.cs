@@ -6,7 +6,7 @@ namespace Oid85.Medicaments.Infrastructure.Entities
     /// <summary>
     /// Лекарство
     /// </summary>
-    public class PillEntity : AuditableEntity
+    public class MedicamentEntity : AuditableEntity
     {
         /// <summary>
         /// Наименование

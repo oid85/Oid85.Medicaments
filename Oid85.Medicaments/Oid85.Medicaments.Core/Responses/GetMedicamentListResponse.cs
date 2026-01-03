@@ -1,11 +1,11 @@
 ﻿namespace Oid85.Medicaments.Core.Responses
 {
-    public class GetPillListResponse
+    public class GetMedicamentListResponse
     {
-        public List<GetPillListItemResponse> Pills { get; set; }
+        public List<GetMedicamentListItemResponse> Medicaments { get; set; }
     }
 
-    public class GetPillListItemResponse
+    public class GetMedicamentListItemResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

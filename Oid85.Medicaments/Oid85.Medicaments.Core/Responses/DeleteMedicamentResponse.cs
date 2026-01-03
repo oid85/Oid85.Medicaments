@@ -1,6 +1,6 @@
 ﻿namespace Oid85.Medicaments.Core.Responses
 {
-    public class AddPillResponse
+    public class DeleteMedicamentResponse
     {
         public Guid? Id { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Oid85.Medicaments.Core.Requests
 {
-    public class DeletePillRequest
+    public class DeleteMedicamentRequest
     {
         public Guid Id { get; set; }
     }

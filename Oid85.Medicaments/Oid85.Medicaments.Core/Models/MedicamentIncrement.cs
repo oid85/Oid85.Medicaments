@@ -5,7 +5,7 @@ namespace Oid85.Medicaments.Core.Models
     /// <summary>
     /// Приход-расход лекарства
     /// </summary>
-    public class PillIncrement : AuditableModel
+    public class MedicamentIncrement : AuditableModel
     {
         /// <summary>
         /// Дата
@@ -20,6 +20,6 @@ namespace Oid85.Medicaments.Core.Models
         /// <summary>
         /// Лекарство
         /// </summary>
-        public Pill Pill { get; set; }
+        public Medicament Medicament { get; set; }
     }
 }

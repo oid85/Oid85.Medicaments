@@ -31,7 +31,7 @@ public static class ServiceCollectionExtensions
                 .UseNpgsql(configuration.GetValue<string>(KnownSettingsKeys.PostgresMedicamentsConnectionString)!)
                 .EnableServiceProviderCaching(false), poolSize: 32);
 
-        services.AddTransient<IPillRepository, PillRepository>();
+        services.AddTransient<IMedicamentRepository, MedicamentRepository>();
     }
 
     public static async Task ApplyMigrations(this IHost host)

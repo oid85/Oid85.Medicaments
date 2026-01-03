@@ -4,6 +4,7 @@ using Oid85.Medicaments.WebHost.Extensions;
 using Oid85.Medicaments.Infrastructure.Extensions;
 using Oid85.Medicaments.Application.Extensions;
 using Oid85.Medicaments.Common.KnownConstants;
+using Hangfire;
 
 namespace Oid85.Medicaments.WebHost
 {
@@ -24,6 +25,7 @@ namespace Oid85.Medicaments.WebHost
             builder.Services.ConfigureLogger();
             builder.Services.ConfigureSwagger(builder.Configuration);
             builder.Services.ConfigureCors(builder.Configuration);
+            builder.Services.ConfigureHangfire();
             builder.Services.ConfigureApplicationServices();
             builder.Services.ConfigureInfrastructure(builder.Configuration);
 
@@ -50,6 +52,10 @@ namespace Oid85.Medicaments.WebHost
                 options.RoutePrefix = "";
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1");
             });
+
+            app.UseHangfireDashboard("/dashboard");
+
+            await app.RegisterHangfireJobs(builder.Configuration);
 
             app.MapControllers();
 

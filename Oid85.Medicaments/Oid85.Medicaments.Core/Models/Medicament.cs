@@ -5,7 +5,7 @@ namespace Oid85.Medicaments.Core.Models
     /// <summary>
     /// Лекарство
     /// </summary>
-    public class Pill : AuditableModel
+    public class Medicament : AuditableModel
     {
         /// <summary>
         /// Наименование
