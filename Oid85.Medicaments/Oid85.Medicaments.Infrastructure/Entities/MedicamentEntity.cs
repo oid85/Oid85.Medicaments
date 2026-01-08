@@ -24,5 +24,11 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         /// Доза
         /// </summary>
         public int? Dose { get; set; }
+
+        /// <summary>
+        /// Псевдоним
+        /// </summary>
+        [MaxLength(100)]
+        public string? Alias { get; set; }
     }
 }

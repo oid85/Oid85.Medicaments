@@ -21,5 +21,10 @@ namespace Oid85.Medicaments.Core.Models
         /// Доза
         /// </summary>
         public int? Dose { get; set; }
+
+        /// <summary>
+        /// Псевдоним
+        /// </summary>
+        public string? Alias { get; set; }
     }
 }
