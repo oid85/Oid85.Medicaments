@@ -19,9 +19,9 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
             var entity = new MedicamentEntity
             {
                 Id = Guid.NewGuid(),
-                Name = model.Name,
-                Shedule = model.Shedule,
-                Dose = model.Dose
+                Name = model.Name,                
+                Dose = model.Dose,
+                Alias = model.Alias
             };
 
             await context.AddAsync(entity);
@@ -82,8 +82,8 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 .Where(x => x.Id == model.Id)
                 .ExecuteUpdateAsync(x => x
                         .SetProperty(entity => entity.Name, model.Name)
-                        .SetProperty(entity => entity.Shedule, model.Shedule)
-                        .SetProperty(entity => entity.Dose, model.Dose));
+                        .SetProperty(entity => entity.Dose, model.Dose)
+                        .SetProperty(entity => entity.Alias, model.Alias));
 
             await context.SaveChangesAsync();
 
@@ -128,9 +128,9 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 .Select(x => new Medicament
                 {
                     Id = x.Id,
-                    Name = x.Name,
-                    Shedule = x.Shedule,
-                    Dose = x.Dose
+                    Name = x.Name,                    
+                    Dose = x.Dose,
+                    Alias = x.Alias
                 })
                 .ToList();
 

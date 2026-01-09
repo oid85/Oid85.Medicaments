@@ -3,7 +3,7 @@
     public class CreateMedicamentRequest
     {
         public string Name { get; set; }
-        public string Shedule { get; set; }
-        public int Dose { get; set; }
+        public int? Dose { get; set; }
+        public string? Alias { get; set; }
     }
 }

@@ -34,8 +34,8 @@ namespace Oid85.Medicaments.Application.Services
             var model = new Medicament
             {
                 Name = request.Name,
-                Shedule = request.Shedule,
-                Dose = request.Dose
+                Dose = request.Dose,
+                Alias = request.Alias,
             };
 
             var id = await medicamentRepository.CreateMedicamentAsync(model);
@@ -74,7 +74,7 @@ namespace Oid85.Medicaments.Application.Services
             {
                 Id = request.Id,
                 Name = request.Name,
-                Shedule = request.Shedule,
+                Alias = request.Alias,
                 Dose = request.Dose
             };
 
@@ -110,8 +110,8 @@ namespace Oid85.Medicaments.Application.Services
                     {
                         Id= medicament.Id,
                         Name = medicament.Name,
-                        Shedule= medicament.Shedule,
                         Dose = medicament.Dose,
+                        Alias = medicament.Alias,
                         Reserve = reserve
                     });
             }

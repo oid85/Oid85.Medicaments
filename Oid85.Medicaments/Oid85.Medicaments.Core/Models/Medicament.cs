@@ -13,11 +13,6 @@ namespace Oid85.Medicaments.Core.Models
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// Расписание
-        /// </summary>
-        public string? Shedule { get; set; }
-
-        /// <summary>
         /// Доза
         /// </summary>
         public int? Dose { get; set; }
