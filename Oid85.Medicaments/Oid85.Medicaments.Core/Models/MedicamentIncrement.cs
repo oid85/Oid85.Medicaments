@@ -18,6 +18,11 @@ namespace Oid85.Medicaments.Core.Models
         public int Reserve { get; set; }
 
         /// <summary>
+        /// Изменение
+        /// </summary>
+        public int Value { get; set; }
+
+        /// <summary>
         /// Лекарство
         /// </summary>
         public Medicament Medicament { get; set; }

@@ -3,6 +3,6 @@
     public class AddMedicamentRequest
     {
         public Guid MedicamentId { get; set; }
-        public int Number { get; set; }
+        public int Value { get; set; }
     }
 }

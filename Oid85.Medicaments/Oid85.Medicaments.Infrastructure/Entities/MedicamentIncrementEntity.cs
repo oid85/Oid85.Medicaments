@@ -18,6 +18,11 @@ namespace Oid85.Medicaments.Infrastructure.Entities
         public int Reserve { get; set; }
 
         /// <summary>
+        /// Изменение
+        /// </summary>
+        public int Value { get; set; }
+
+        /// <summary>
         /// Лекарство
         /// </summary>
         public MedicamentEntity Medicament { get; set; }

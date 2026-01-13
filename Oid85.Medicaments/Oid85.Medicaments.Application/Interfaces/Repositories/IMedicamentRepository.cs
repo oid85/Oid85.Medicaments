@@ -17,9 +17,10 @@ namespace Oid85.Medicaments.Application.Interfaces.Repositories
         /// Пополнить запас лекарства
         /// </summary>
         /// <param name="medicamentId">Идентификатор лекарства</param>
-        /// <param name="number">Кол-во</param>
+        /// <param name="date">Дата</param>
+        /// <param name="value">Кол-во</param>
         /// <returns></returns>
-        Task<Guid?> CreateMedicamentIncrementAsync(Guid medicamentId, int number);
+        Task<Guid?> CreateMedicamentIncrementAsync(Guid medicamentId, DateOnly date, int value);
 
         /// <summary>
         /// Удалить лекарство
@@ -41,5 +42,15 @@ namespace Oid85.Medicaments.Application.Interfaces.Repositories
         /// Получить список лекарств
         /// </summary>
         Task<List<Medicament>?> GetMedicamentsAsync();
+
+        /// <summary>
+        /// Получить изменения количества лекарств
+        /// </summary>
+        Task<List<MedicamentIncrement>?> GetMedicamentIncrementsAsync(Guid medicamentId);
+
+        /// <summary>
+        /// Получить изменения количества лекарств на дату
+        /// </summary>
+        Task<List<MedicamentIncrement>?> GetMedicamentIncrementByDateAsync(Guid medicamentId, DateOnly date);
     }
 }

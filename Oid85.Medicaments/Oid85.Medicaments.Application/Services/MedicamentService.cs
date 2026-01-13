@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Oid85.Medicaments.Application.Interfaces.Repositories;
+﻿using Oid85.Medicaments.Application.Interfaces.Repositories;
 using Oid85.Medicaments.Application.Interfaces.Services;
 using Oid85.Medicaments.Core.Models;
 using Oid85.Medicaments.Core.Requests;
@@ -15,7 +14,8 @@ namespace Oid85.Medicaments.Application.Services
         /// <inheritdoc />
         public async Task<AddMedicamentResponse?> AddMedicamentAsync(AddMedicamentRequest request)
         {
-            var id = await medicamentRepository.CreateMedicamentIncrementAsync(request.MedicamentId, request.Number);
+            var id = await medicamentRepository.CreateMedicamentIncrementAsync(
+                request.MedicamentId, DateOnly.FromDateTime(DateTime.Today), request.Value);
 
             if (id is null)
                 return null;
