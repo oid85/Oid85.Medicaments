@@ -52,7 +52,8 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 Id = Guid.NewGuid(),
                 Date = date,
                 Medicament = medicamentEntity,
-                Reserve = prevReserve + value
+                Reserve = prevReserve + value,
+                Value = value
             };
 
             await context.AddAsync(entity);
@@ -108,6 +109,7 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 Id = x.Id,
                 Date = x.Date,
                 Reserve = x.Reserve,
+                Value = x.Value,
                 Medicament = new Medicament
                 {
                     Id = x.Medicament.Id,
@@ -140,13 +142,13 @@ namespace Oid85.Medicaments.Infrastructure.Repositories
                 Id = x.Id,
                 Date = x.Date,
                 Reserve = x.Reserve,
+                Value = x.Value,
                 Medicament = new Medicament
                 {
                     Id = x.Medicament.Id,
                     Name = x.Medicament.Name,
                     Dose = x.Medicament.Dose,
                     Alias = x.Medicament.Alias
-
                 }
             }).ToList();
 
