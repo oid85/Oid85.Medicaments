@@ -15,7 +15,7 @@ namespace Oid85.Medicaments.Application.Services
         public async Task<AddMedicamentResponse?> AddMedicamentAsync(AddMedicamentRequest request)
         {
             var id = await medicamentRepository.CreateMedicamentIncrementAsync(
-                request.MedicamentId, DateOnly.FromDateTime(DateTime.Today), request.Value);
+                request.Id, DateOnly.FromDateTime(DateTime.Today), request.Value);
 
             if (id is null)
                 return null;
