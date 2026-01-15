@@ -101,11 +101,13 @@ namespace Oid85.Medicaments.Application.Services
 
             var response = new GetMedicamentListResponse { Medicaments = [] };
 
+            var medicamentItems = new List<GetMedicamentListItemResponse>();
+
             foreach ( var medicament in medicaments )
             {
                 var reserve = await medicamentRepository.GetMedicamentReserveAsync(medicament.Id);
 
-                response.Medicaments.Add(
+                medicamentItems.Add(
                     new GetMedicamentListItemResponse
                     {
                         Id= medicament.Id,
@@ -115,6 +117,8 @@ namespace Oid85.Medicaments.Application.Services
                         Reserve = reserve
                     });
             }
+
+            response.Medicaments = medicamentItems.OrderBy(x => x.Reserve).ToList();
 
             return response;
         }        
