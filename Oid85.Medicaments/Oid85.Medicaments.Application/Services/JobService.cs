@@ -53,9 +53,10 @@ namespace Oid85.Medicaments.Application.Services
 
             if (increments is null || increments.Count == 0)
             {
-                if (medicament.Dose.HasValue)
-                    if (today.Day >= 1 && today.Day <= 10)
-                        await medicamentRepository.CreateMedicamentIncrementAsync(medicament.Id, today, -1 * medicament.Dose.Value);
+                if (today.Day >= 1 && today.Day <= 10)
+                    if (medicament.Dose.HasValue)                    
+                        await medicamentRepository.CreateMedicamentIncrementAsync(
+                            medicament.Id, today, -1 * medicament.Dose.Value);
             }
 
             else
@@ -65,12 +66,14 @@ namespace Oid85.Medicaments.Application.Services
 
                 foreach (var date in dates)
                 {
-                    var incrementsByDate = (await medicamentRepository.GetMedicamentIncrementByDateAsync(medicament.Id, date))?
+                    var incrementsByDate = 
+                        (await medicamentRepository.GetMedicamentIncrementByDateAsync(medicament.Id, date))?
                         .Where(x => x.Value < 0).ToList();
 
                     if (incrementsByDate is null || incrementsByDate is [])
                         if (medicament.Dose.HasValue)
-                            await medicamentRepository.CreateMedicamentIncrementAsync(medicament.Id, date, -1 * medicament.Dose.Value);
+                            await medicamentRepository.CreateMedicamentIncrementAsync(
+                                medicament.Id, date, -1 * medicament.Dose.Value);
                 }
             }
         }
