@@ -31,6 +31,6 @@
 	  <ProjectReference Include="..\Oid85.Medicaments.Common\Oid85.Medicaments.Common.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Interceptors\" />
+	  <Folder Include="Database\Interceptors\" />
 	</ItemGroup>
 </Project>

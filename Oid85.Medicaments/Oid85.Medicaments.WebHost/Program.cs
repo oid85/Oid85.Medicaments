@@ -28,6 +28,7 @@ namespace Oid85.Medicaments.WebHost
             builder.Services.ConfigureHangfire();
             builder.Services.ConfigureApplicationServices();
             builder.Services.ConfigureInfrastructure(builder.Configuration);
+            builder.Services.ConfigureHealthServiceApiClient(builder.Configuration);
 
             builder.Services.AddWindowsService(options =>
             {
