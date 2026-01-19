@@ -11,9 +11,16 @@ namespace Oid85.Medicaments.Infrastructure.ApiClients.Health
         : IHealthServiceApiClient
     {
         /// <inheritdoc />
-        public async Task<int> GetCountGlucoseAsync(DateOnly date) => 
-            (await GetResponseAsync<GetCountGlucoseRequest, GetCountGlucoseResponse>(
-                "/api/glucose/count", new GetCountGlucoseRequest { Date = date })).TotalCount;
+        public async Task<int> GetCountGlucoseAsync(DateOnly date)
+        {
+            var response = await GetResponseAsync<GetCountGlucoseRequest, GetCountGlucoseResponse>(
+                "/api/glucose/count", new GetCountGlucoseRequest { Date = date });
+            
+            if (response is null)
+                return 0;
+
+            return response.Result.TotalCount;
+        }
 
         public class GetCountGlucoseRequest
         {
@@ -21,6 +28,11 @@ namespace Oid85.Medicaments.Infrastructure.ApiClients.Health
         }
 
         public class GetCountGlucoseResponse
+        {
+            public GetCountGlucoseResultResponse Result { get; set; }
+        }
+
+        public class GetCountGlucoseResultResponse
         {
             public int TotalCount { get; set; }
         }
