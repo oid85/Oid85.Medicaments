@@ -27,15 +27,15 @@ namespace Oid85.Medicaments.Application.Services
                 switch (medicament.Alias)
                 {
                     case KnownAliases.Canephron:
-                        await ProcessCanephron(medicament);
+                        await ProcessCanephronAsync(medicament);
                         break;
 
                     case KnownAliases.BloodGlucoseTestStrips:
-                        await ProcessBloodGlucoseTestStrips(medicament);
+                        await ProcessBloodGlucoseTestStripsAsync(medicament);
                         break;
 
                     default:
-                        await ProcessMedicament(medicament);
+                        await ProcessMedicamentAsync(medicament);
                         break;
                 }
             }
@@ -44,7 +44,7 @@ namespace Oid85.Medicaments.Application.Services
         /// <summary>
         /// Обработка инкремента медикамента Канефрон (прием с 1 по 10 число каждого месяца)
         /// </summary>
-        private async Task ProcessCanephron(Medicament medicament)
+        private async Task ProcessCanephronAsync(Medicament medicament)
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
 
@@ -53,7 +53,7 @@ namespace Oid85.Medicaments.Application.Services
 
             if (increments is null || increments.Count == 0)
             {
-                if (today.Day >= 1 && today.Day <= 10)
+                if (today.Day >= 1 && today.Day <= 10) // с 1 по 10 число каждого месяца
                     if (medicament.Dose.HasValue)                    
                         await medicamentRepository.CreateMedicamentIncrementAsync(
                             medicament.Id, today, -1 * medicament.Dose.Value);
@@ -81,7 +81,7 @@ namespace Oid85.Medicaments.Application.Services
         /// <summary>
         /// Обработка инкремента тестовых полосок для измерения глюкозы
         /// </summary>
-        private async Task ProcessBloodGlucoseTestStrips(Medicament medicament)
+        private async Task ProcessBloodGlucoseTestStripsAsync(Medicament medicament)
         {
             if (DateTime.Now.Hour <= 6)
                 return;
@@ -118,7 +118,7 @@ namespace Oid85.Medicaments.Application.Services
         /// <summary>
         /// Обработка инкремента медикамента
         /// </summary>
-        private async Task ProcessMedicament(Medicament medicament)
+        private async Task ProcessMedicamentAsync(Medicament medicament)
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
 
